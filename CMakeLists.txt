@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
+set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "")
 include(ProcessorCount)
 
 project(Alive2)
