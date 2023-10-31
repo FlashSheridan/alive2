@@ -30,6 +30,7 @@ done
 NPM_TV=1
 SKIP_ARG=0
 
+VERBOSE=0
 for arg in $@; do
   # update the -passes argument only.
   shift
@@ -39,6 +40,12 @@ for arg in $@; do
     continue
   fi
 
+  if [[ $arg == "-v" || $arg == "--verbose" ]]; then
+    VERBOSE=1
+    echo VERBOSE
+    continue
+  fi
+  
   if [[ $arg == "-passes" || $arg == "--passes" ]]; then
     arg="-passes=$1"
     SKIP_ARG=1
