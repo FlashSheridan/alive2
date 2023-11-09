@@ -30,7 +30,7 @@ done
 NPM_TV=1
 SKIP_ARG=0
 
-TIMEOUT_CMD="timeout 4000"
+TIMEOUT_DURATION="4000"
 VERBOSE=0
 for arg in $@; do
   # update the -passes argument only.
@@ -45,6 +45,13 @@ for arg in $@; do
     VERBOSE=1
     echo VERBOSE
     continue
+  fi
+  
+  if [[ $arg == "-t" || $arg == "--timeout" ]]; then
+    TIMEOUT_DURATION=$1
+    echo TIMEOUT_DURATION: $TIMEOUT_DURATION
+    SKIP_ARG=1
+   continue
   fi
   
   if [[ $arg == "-passes" || $arg == "--passes" ]]; then
@@ -96,6 +103,7 @@ else
   TV_SHAREDLIB=tv.so
 fi
 
+TIMEOUT_CMD="timeout $TIMEOUT_DURATION"
 TV_REPORT_DIR=""
 TV_SMT_TO=""
 TV_SMT_STATS=""
