@@ -30,6 +30,7 @@ done
 NPM_TV=1
 SKIP_ARG=0
 
+TIMEOUT="timeout 4000"
 VERBOSE=0
 for arg in $@; do
   # update the -passes argument only.
@@ -96,12 +97,10 @@ else
 fi
 
 TV_REPORT_DIR=""
-TIMEOUT=""
 TV_SMT_TO=""
 TV_SMT_STATS=""
 if [[ @FOR_ALIVE2_TEST@ == 0 ]]; then
   TV_REPORT_DIR=-tv-report-dir=@CMAKE_BINARY_DIR@/logs
-  TIMEOUT="timeout 4000"
   TV_SMT_TO=-tv-smt-to=20000
   TV_SMT_STATS=-tv-smt-stats
 fi
