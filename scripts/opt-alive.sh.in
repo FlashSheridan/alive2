@@ -20,6 +20,7 @@ NPM_TV=1
 SKIP_TV=0
 SKIP_ARG=0
 
+TIMEOUT_DURATION="4000"
 VERBOSE=0
 for arg in $@; do
   if [[ $SKIP_ARG == 1 ]]; then
@@ -46,9 +47,15 @@ for arg in $@; do
     echo VERBOSE
   fi
   
+  if [[ $arg == "-t" || $arg == "--timeout" ]]; then
+    TIMEOUT_DURATION=$1
+    echo TIMEOUT_DURATION: $TIMEOUT_DURATION
+    SKIP_ARG=1
+   continue
+  fi
+  
 done
 
-TIMEOUT=""
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac
   TV_SHAREDLIB=tv.dylib
@@ -65,6 +72,7 @@ if [[ $SKIP_TV == 0 && $NPM_TV == 0 ]]; then
   TV="-tv"
 fi
 
+TIMEOUT_CMD="timeout $TIMEOUT_DURATION"
 TV_REPORT_DIR=""
 TV_SMT_TO=""
 TV_SMT_STATS=""
@@ -79,7 +87,7 @@ if [[ $SKIP_TV == 0 && $NPM_TV == 1 ]]; then
   NPM_PLUGIN="-load-pass-plugin=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB"
 fi
 
-COMMAND="$TIMEOUT @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB  $NPM_PLUGIN -tv-exit-on-error $TV $@ $TV $TV_SMT_TO $TV_REPORT_DIR $TV_SMT_STATS"
+COMMAND="$TIMEOUT_CMD @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB  $NPM_PLUGIN -tv-exit-on-error $TV $@ $TV $TV_SMT_TO $TV_REPORT_DIR $TV_SMT_STATS"
 
 if [[ $VERBOSE == 1 ]]; then
   echo COMMAND: $COMMAND
