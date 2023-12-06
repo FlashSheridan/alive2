@@ -106,7 +106,7 @@ done
 if [[ "$FORCE_PASS" == 0  ]]; then
   PASSES_ARG=$@ 
 else
-  PASSES_ARG="$@ $FORCE_PASS"
+  PASSES_ARG="$@ --passes=module(tv),$FORCE_PASS,module(tv)"
   echo PASSES_ARG: $PASSES_ARG
 fi
 
