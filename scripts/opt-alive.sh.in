@@ -32,6 +32,7 @@ SKIP_ARG=0
 
 TIMEOUT_DURATION="4000"
 VERBOSE=0
+FORCE_PASS=0
 for arg in $@; do
   # update the -passes argument only.
   shift
@@ -50,6 +51,13 @@ for arg in $@; do
   if [[ $arg == "-t" || $arg == "--timeout" ]]; then
     TIMEOUT_DURATION=$1
     echo TIMEOUT_DURATION: $TIMEOUT_DURATION
+    SKIP_ARG=1
+   continue
+  fi
+  
+  if [[ $arg == "--force-pass" ]]; then
+    FORCE_PASS=$1
+    echo FORCE_PASS: $FORCE_PASS
     SKIP_ARG=1
    continue
   fi
@@ -95,6 +103,13 @@ for arg in $@; do
   fi
 done
 
+if [[ "$FORCE_PASS" == 0  ]]; then
+  PASSES_ARG=$@ 
+else
+  PASSES_ARG="$@ $FORCE_PASS"
+  echo PASSES_ARG: $PASSES_ARG
+fi
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac
   TV_SHAREDLIB=tv.dylib
@@ -119,7 +134,7 @@ if [[ $NPM_TV == 1 ]]; then
 fi
 
 
-COMMAND="$TIMEOUT_CMD @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB  $NPM_PLUGIN -tv-exit-on-error $TV $@ $TV $TV_SMT_TO $TV_REPORT_DIR $TV_SMT_STATS"
+COMMAND="$TIMEOUT_CMD @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB  $NPM_PLUGIN -tv-exit-on-error $TV $PASSES_ARG $TV $TV_SMT_TO $TV_REPORT_DIR $TV_SMT_STATS"
 
 if [[ $VERBOSE == 1 ]]; then
   echo COMMAND: $COMMAND
