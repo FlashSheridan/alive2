@@ -32,7 +32,7 @@ SKIP_ARG=0
 
 TIMEOUT_DURATION="4000"
 VERBOSE=0
-FORCE_PASS=0
+ADD_PASS=0
 for arg in $@; do
   # update the -passes argument only.
   shift
@@ -55,9 +55,9 @@ for arg in $@; do
    continue
   fi
   
-  if [[ $arg == "--force-pass" ]]; then
-    FORCE_PASS=$1
-    echo FORCE_PASS: $FORCE_PASS
+  if [[ $arg == "--add-pass" ]]; then
+    ADD_PASS=$1
+    echo ADD_PASS: $ADD_PASS
     SKIP_ARG=1
    continue
   fi
@@ -103,13 +103,13 @@ for arg in $@; do
   fi
 done
 
-if [[ "$FORCE_PASS" == 0  ]]; then
+if [[ "$ADD_PASS" == 0  ]]; then
   PASSES_ARG=$@ 
 else
-  if [[ $FORCE_PASS == O?  ]]; then
-    FORCE_PASS="default<$FORCE_PASS>"
+  if [[ $ADD_PASS == O?  ]]; then
+    ADD_PASS="default<$ADD_PASS>"
   fi
-  PASSES_ARG="$@ --passes=module(tv),$FORCE_PASS,module(tv)"
+  PASSES_ARG="$@ --passes=module(tv),$ADD_PASS,module(tv)"
   echo PASSES_ARG: $PASSES_ARG
 fi
 
