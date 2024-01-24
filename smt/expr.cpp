@@ -189,7 +189,7 @@ Z3_ast expr::mkFalse() {
 }
 
 expr expr::mkUInt(uint64_t n, Z3_sort sort) {
-  return Z3_mk_unsigned_int64(ctx(), n, sort);
+  return Z3_mk_unsigned_int(ctx(), static_cast<unsigned int>(n), sort);
 }
 
 expr expr::mkUInt(uint64_t n, unsigned bits) {
@@ -774,7 +774,7 @@ expr expr::urem(const expr &rhs) const {
       return mkUInt(0, sort());
 
     if (is_power2(n, &log))
-      return mkUInt(0, bits() - log).concat(extract(log - 1, 0));
+      return mkUInt(0, static_cast<unsigned int>(bits() - log)).concat(extract(static_cast<unsigned>(log) - 1, 0));
   }
   return binop_fold(rhs, Z3_mk_bvurem);
 }

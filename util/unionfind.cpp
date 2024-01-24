@@ -14,7 +14,7 @@ UnionFind::UnionFind(unsigned n) {
 }
 
 unsigned UnionFind::mk() {
-  unsigned n = id.size();
+  unsigned n = static_cast<unsigned int>(id.size());
   id.push_back(n);
   return n;
 }
