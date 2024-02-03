@@ -140,8 +140,8 @@ fi
 COMMAND="$TIMEOUT_CMD @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB  $NPM_PLUGIN -tv-exit-on-error $TV $PASSES_ARG $TV $TV_SMT_TO $TV_REPORT_DIR $TV_SMT_STATS"
 
 if [[ $VERBOSE == 1 ]]; then
-  echo COMMAND: $COMMAND
-  echo
+  echo COMMAND: $COMMAND >&2
+  echo >&2
 fi
 
 $COMMAND
