@@ -75,10 +75,12 @@ fi
 TV_REPORT_DIR=""
 TV_SMT_TO=""
 TV_SMT_STATS=""
+TV_EXIT_ON_ERROR=""
 if [[ @FOR_ALIVE2_TEST@ == 0  && $ALLOW_CUSTOM_TV_ARGS == 1 ]]; then
   TV_REPORT_DIR=-tv-report-dir=@CMAKE_BINARY_DIR@/logs
   TV_SMT_TO=-tv-smt-to=20000
   TV_SMT_STATS=-tv-smt-stats
+  TV_EXIT_ON_ERROR="-tv-exit-on-error"
 fi
 
 NPM_PLUGIN=""
@@ -86,7 +88,6 @@ if [[ $SKIP_TV == 0 && $NPM_TV == 1 ]]; then
   NPM_PLUGIN="-load-pass-plugin=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB"
 fi
 
-TV_EXIT_ON_ERROR="-tv-exit-on-error"
 
 COMMAND="$TIMEOUT @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAREDLIB  $NPM_PLUGIN $TV_EXIT_ON_ERROR $TV $OPT_ARGS $TV $TV_SMT_TO $TV_REPORT_DIR $TV_SMT_STATS"
 
