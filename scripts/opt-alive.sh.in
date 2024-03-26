@@ -20,7 +20,7 @@ NPM_TV=1
 SKIP_TV=0
 
 # Sometimes TV custom args are passed to opt instead
-ALLOW_CUSTOM_TV_ARGS=1
+ALLOW_CUSTOM_TV_ARGS=0
 
 OPT_ARGS=$@
 VERBOSE=0
