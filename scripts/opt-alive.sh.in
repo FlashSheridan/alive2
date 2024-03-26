@@ -88,6 +88,9 @@ COMMAND="$TIMEOUT @LLVM_BINARY_DIR@/bin/opt -load=@CMAKE_BINARY_DIR@/tv/$TV_SHAR
 if [[ $VERBOSE == 1 ]]; then
   echo COMMAND: $COMMAND >&2
   echo >&2
+  echo '$TV_SHAREDLIB, $NPM_PLUGIN, $TV, $OPT_ARGS, $TV, $TV_SMT_TO, $TV_REPORT_DIR, $TV_SMT_STATS:' >&2
+  echo "$TV_SHAREDLIB, $NPM_PLUGIN, $TV, $OPT_ARGS, $TV, $TV_SMT_TO, $TV_REPORT_DIR, $TV_SMT_STATS" >&2
+  echo >&2
 fi
 
 $COMMAND
