@@ -19,6 +19,9 @@ FORCE_OLD_NPM="codegenprepare interleaved-load-combine unreachableblockelim atom
 NPM_TV=1
 SKIP_TV=0
 
+# Sometimes TV custom args are passed to opt instead
+ALLOW_CUSTOM_TV_ARGS=1
+
 OPT_ARGS=$@
 VERBOSE=0
 NO_TIMEOUT=0
@@ -72,7 +75,7 @@ fi
 TV_REPORT_DIR=""
 TV_SMT_TO=""
 TV_SMT_STATS=""
-if [[ @FOR_ALIVE2_TEST@ == 0 ]]; then
+if [[ @FOR_ALIVE2_TEST@ == 0  && $ALLOW_CUSTOM_TV_ARGS == 1 ]]; then
   TV_REPORT_DIR=-tv-report-dir=@CMAKE_BINARY_DIR@/logs
   TV_SMT_TO=-tv-smt-to=20000
   TV_SMT_STATS=-tv-smt-stats
