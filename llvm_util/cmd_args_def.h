@@ -33,7 +33,7 @@ func_names.insert(opt_funcs.begin(), opt_funcs.end());
 
 if (!report_dir_created && !opt_report_dir.empty()) {
   try {
-    cerr << "Alive2: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
+//    cerr << "Alive2: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
     fs::create_directories(opt_report_dir.getValue());
   } catch (...) {
     cerr << "Alive2: Couldn't create report directory!" << endl;
@@ -60,7 +60,7 @@ if (!report_dir_created && !opt_report_dir.empty()) {
     cerr << "Alive2: Couldn't open report file!" << endl;
     exit(1);
   }
-  *out << "Alive2b: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
+//  *out << "Alive2b: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
 
   report_filename = path;
   *out << "Source: " << source_file << endl;

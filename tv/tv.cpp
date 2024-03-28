@@ -242,7 +242,7 @@ struct TVLegacyPass final : public llvm::ModulePass {
   }
 
   static void verify(Transform &t, int n, const string &src_tostr) {
-    *out << "Alive2c: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
+//    *out << "Alive2c: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
     printDot(t.tgt, n);
 
     auto tgt_tostr = toString(t.tgt);
