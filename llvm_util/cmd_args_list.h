@@ -135,7 +135,7 @@ ostream *out;
 
 llvm::cl::opt<string> opt_report_dir(LLVM_ARGS_PREFIX "report-dir",
   llvm::cl::desc("Save report to disk"), llvm::cl::value_desc("directory"),
-  llvm::cl::cat(alive_cmdargs));
+  llvm::cl::init("/Users/flash/Documents/Code/Alive17/compiler-tester/alive2/build/logs"), llvm::cl::cat(alive_cmdargs));
 
 bool report_dir_created = false;
 fs::path report_filename;
