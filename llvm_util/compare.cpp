@@ -114,7 +114,7 @@ bool Verifier::compareFunctions(llvm::Function &F1, llvm::Function &F2) {
     break;
 
   case Results::SYNTACTIC_EQ:
-    out << "Transformation seems to be correct! (syntactically equal)\n\n";
+    out << "Transformation seems to be correct! (syntactically equal) [compare.cpp]\n\n";
     ++num_correct;
     break;
 

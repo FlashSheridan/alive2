@@ -242,6 +242,7 @@ struct TVLegacyPass final : public llvm::ModulePass {
   }
 
   static void verify(Transform &t, int n, const string &src_tostr) {
+    *out << "Alive2c: opt_report_dir.getValue:" << opt_report_dir.getValue() << endl;
     printDot(t.tgt, n);
 
     auto tgt_tostr = toString(t.tgt);
@@ -253,7 +254,7 @@ struct TVLegacyPass final : public llvm::ModulePass {
           print_opts.skip_tgt = true;
           t.print(*out, print_opts);
         }
-        *out << "Transformation seems to be correct! (syntactically equal)\n\n";
+        *out << "Transformation seems to be correct! (syntactically equal) [tv.cpp]\n\n";
         return;
       }
     }
