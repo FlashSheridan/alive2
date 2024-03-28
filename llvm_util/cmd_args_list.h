@@ -52,7 +52,7 @@ llvm::cl::opt<bool> opt_tgt_is_asm(
 
 llvm::cl::opt<bool> opt_error_fatal(LLVM_ARGS_PREFIX "exit-on-error",
   llvm::cl::desc("Exit on error"),
-  llvm::cl::init(false), llvm::cl::cat(alive_cmdargs));
+  llvm::cl::init(true), llvm::cl::cat(alive_cmdargs));
 
 llvm::cl::opt<bool> opt_se_verbose(LLVM_ARGS_PREFIX "se-verbose",
   llvm::cl::desc("Symbolic execution verbose mode"),
@@ -69,7 +69,7 @@ llvm::cl::opt<unsigned> opt_smt_max_mem(LLVM_ARGS_PREFIX "smt-max-mem",
 
 llvm::cl::opt<bool> opt_smt_stats(LLVM_ARGS_PREFIX "smt-stats",
   llvm::cl::desc("Show SMT statistics"),
-  llvm::cl::init(false), llvm::cl::cat(alive_cmdargs));
+  llvm::cl::init(true), llvm::cl::cat(alive_cmdargs));
 
 llvm::cl::opt<unsigned> opt_smt_random_seed(LLVM_ARGS_PREFIX "smt-random-seed",
   llvm::cl::desc("Random seed for the SMT solver (default=0)"),
@@ -135,7 +135,7 @@ ostream *out;
 
 llvm::cl::opt<string> opt_report_dir(LLVM_ARGS_PREFIX "report-dir",
   llvm::cl::desc("Save report to disk"), llvm::cl::value_desc("directory"),
-  llvm::cl::init("/Users/flash/Documents/Code/Alive17/compiler-tester/alive2/build/logs"), llvm::cl::cat(alive_cmdargs));
+  llvm::cl::init("/Users/flash/Documents/Code/Alive17/compiler-tester/alive2/build/logs"), llvm::cl::cat(alive_cmdargs));  //Hack
 
 bool report_dir_created = false;
 fs::path report_filename;
