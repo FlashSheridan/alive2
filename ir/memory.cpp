@@ -196,7 +196,7 @@ Byte::Byte(const Memory &m, expr &&byterepr) : m(m), p(std::move(byterepr)) {
 
 Byte::Byte(const Memory &m, const StateValue &ptr, unsigned i) : m(m) {
   // TODO: support pointers larger than 64 bits.
-  assert(bits_program_pointer <= 64 && bits_program_pointer % 8 == 0);
+  assert(bits_program_pointer <= IR::bits_ptr_address && bits_program_pointer % 8 == 0);
   assert(i == 0 || bits_ptr_byte_offset() > 0);
 
   if (!does_ptr_mem_access) {
