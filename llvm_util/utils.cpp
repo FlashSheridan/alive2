@@ -134,7 +134,8 @@ Type* llvm_type2alive(const llvm::Type *ty) {
     // TODO: support for non-64 bits pointers
     unsigned as = cast<llvm::PointerType>(ty)->getAddressSpace();
     // TODO: add support for non-0 AS
-//    if (as != 0)
+    if (as != 0)
+        *out << "WARNING: Non-zero address space :" << as << std::endl;
 //      return nullptr;
 
     if (as >= ptr_types.size())
