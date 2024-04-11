@@ -901,7 +901,7 @@ struct CountMemBlock {
 static void initBitsProgramPointer(Transform &t) {
   // FIXME: varies among address spaces
   bits_program_pointer = t.src.bitsPointers();
-  assert(bits_program_pointer > 0 && bits_program_pointer <= IR::bits_ptr_address);
+  assert(bits_program_pointer > 0 && bits_program_pointer <= IR::max_bits_program_pointer);
   assert(bits_program_pointer == t.tgt.bitsPointers());
 }
 

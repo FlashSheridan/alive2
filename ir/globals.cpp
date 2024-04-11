@@ -23,6 +23,7 @@ unsigned bits_for_ptrattrs = 8;
 unsigned bits_for_bid = 64;
 unsigned bits_for_offset = 64;
 unsigned bits_program_pointer = 64;
+unsigned const max_bits_program_pointer = 256;
 unsigned bits_size_t = 64;
 unsigned bits_ptr_address = 64;
 unsigned bits_byte = 8;

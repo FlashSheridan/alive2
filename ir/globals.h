@@ -42,6 +42,9 @@ extern unsigned bits_for_offset;
 /// Size of a program pointer in bytes
 extern unsigned bits_program_pointer;
 
+/// Hack:  Max size of a program pointer in bytes, trying to allow > 64
+extern unsigned const max_bits_program_pointer;
+
 /// sizeof(size_t)
 extern unsigned bits_size_t;
 
