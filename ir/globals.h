@@ -39,7 +39,7 @@ extern unsigned bits_for_bid;
 // Number of bits needed for encoding a pointer's offset
 extern unsigned bits_for_offset;
 
-/// Size of a program pointer in bytes
+/// Size of a program pointer in bits
 extern unsigned bits_program_pointer;
 
 /// Hack:  Max size of a program pointer in bytes, trying to allow > 64
